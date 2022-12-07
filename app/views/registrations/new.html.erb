@@ -1,0 +1,26 @@
+<h1> Sign_up </h1>
+
+    <%= form_with model: @Student, url: registrations_path do |form| %>
+    <% if @student.errors.any? %>
+    <div class="alter alter-danger">
+    <% @student.errors.full_massages.each do |massage| %>
+    <div><%= massage %></div>
+    <% end %>
+    </div>
+   <% end %>
+    <%= form.label :email %>
+        <div class="mb-3" %>
+        <%= form.email_field:email, class:"form-control", placeholder:"link2@gmail.com", required: true %>
+    </div>
+        <%= form.label :password %>
+        <div class="mb-3">
+    <%= form.password_field:password, class:"form-control", placeholder:"password", required: true %>
+    </div>
+        <%= form.label :confirmation_password %>
+        <div class="mb-3">
+    <%= form.password_field:password_confirmation, class:"form-control", placeholder:"confirm password", required: true %>
+    </div>
+        <%= form.submit "Sign-up", class:"btn btn-primary" %>
+    <% end %>
+
+

@@ -1,0 +1,16 @@
+<ul>
+  <% @book.where(student_id: session[:student_id]).each do |book| %><br>
+    <li><%= link_to book.name, books_path(book)  %></li>
+    <div class="actions", style="float: right;">
+      <%= link_to 'show', book_path(book.id), method: :patch %>|
+      <div class="actions", style="float: right;">
+        <%= link_to 'edit', edit_book_path(book.id), method: :patch %>|
+        <div class="actions", style="float: right;">
+          <%= link_to 'destroy', book_path(book.id), data: {turbo_method: "delete",turbo_confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</ul>
+
+ <%= link_to "Go Back", new_book_path %> 

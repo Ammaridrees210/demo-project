@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <%= link_to "MySite", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+      </ul>
+      
+    <ul class="navbar-nav ms-auto mb-2">
+    <% if current_user %>
+      <li class="nav-item">
+      <li class="actions", style="float: right;">
+        <%= link_to "Show Book",  user_books_url, :method => :show_book %>|
+      </li>
+      <li class="actions", class="btn btn-primary mt-4", style="float: right;">
+        <%= link_to "create Book", user_books_path, method: :create_book %>|
+      </li>
+      <span><%= current_user.email %></span>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to "Sign_up", new_user_registration_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign_in", new_user_session_path, class: "nav-link" %>
+      </li>
+      <% end %>
+    </ul>
+    
+    </div>
+  </div>
+</nav>
